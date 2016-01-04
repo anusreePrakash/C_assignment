@@ -18,4 +18,5 @@ int main(){
 	findIndex(a, &element);
 	int element2 = 0;
 	assert(findIndex(a, &element2) == 0);
+	dispose(a);
 };
