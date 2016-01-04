@@ -3,8 +3,8 @@
 #include "array_utils.h"
 
 int main(){
-	ArrayUtil a = create(1, 5);
-	ArrayUtil b = create(1, 5);
-	// areEqual(a, b);
-
+	ArrayUtil a = create(1, 6);
+	ArrayUtil b = create(1, 6);
+	areEqual(a, b);
+	resize(a, 10);
 }

@@ -6,4 +6,4 @@ typedef struct {
 
 ArrayUtil create(int typeSize, int length);
 int areEqual(ArrayUtil a, ArrayUtil b);
-// ArrayUtil resize(ArrayUtil util, int length) 
+ArrayUtil resize(ArrayUtil util, int length);
