@@ -24,11 +24,13 @@ ArrayUtil resize(ArrayUtil util, int length){
 };
 
 int findIndex(ArrayUtil util, void * element){
-	for (int i = 0; i < util.length; ++i){
-		if(*(int *)(util.base+i) == *(int *)element)
+	void *base = util.base;
+	for(int i = 0; i<util.length; ++i){
+		if(memcmp(base, element, util.typeSize) == 0)	
 			return i;
+		base += util.typeSize;		
 	};
-		return -1;
+	return -1;
 };
 
 void dispose(ArrayUtil util){
