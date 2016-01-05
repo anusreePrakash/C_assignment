@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "array_utils.h"
-#include <assert.h>
-
 void create_array_test(){
 	ArrayUtil array_1 = create(1, 6);
 	ArrayUtil array_2 = create(1, 6);
@@ -32,12 +27,4 @@ void findIndex_test(){
 	assert(findIndex(array_1, &element) == -1);
 	int element2 = 0;
 	assert(findIndex(array_1, &element2) == 0);
-};
-int main()
-{
-	create_array_test();
-	arrays_areEqual_test();
-	resize_array_test();
-	findIndex_test();
-	return 0;
 };

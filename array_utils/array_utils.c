@@ -18,10 +18,9 @@ int areEqual(ArrayUtil array_1, ArrayUtil array_2){
 };
 
 ArrayUtil resize(ArrayUtil util, int length){
-	ArrayUtil *newUtil = realloc (util.base , length * util.typeSize);
-	newUtil -> length = length;
-	newUtil -> typeSize = util.typeSize;
-	return *newUtil;
+	util.base = realloc (util.base , length * util.typeSize);
+	util.length = length;
+	return util;
 };
 
 int findIndex(ArrayUtil util, void * element){
