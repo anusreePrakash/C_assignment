@@ -80,7 +80,7 @@ void findLast_test(){
 	assert(value == 2);
 };
 
-int count_test(){
+void count_test(){
 	ArrayUtil util = create(4,6);
 	int *base = (int *)util.base;
 	base[0] = 11;
@@ -91,10 +91,11 @@ int count_test(){
 	base[5] = 66;
 	int no = 2;
 	void * hint = &no;
-	int value = count(util, &isEven, &hint);
-	printf("%d\n", value);
-	return 0; 
-}
+	int value = count(util, &isEven, hint);
+	assert(value == 4);
+	int result = count(util, &isDivisible, hint);
+	assert(result == 4);
+};
 
 int main()
 {
