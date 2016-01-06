@@ -63,6 +63,38 @@ void findFirst_test(){
 	assert(*(int *) result == 6);
 };
 
+void findLast_test(){
+	ArrayUtil util = create(4,6);
+	int * base = (int *) util.base;
+	base[0] = 1;
+	base[1] = 9;
+	base[2] = 3;
+	base[3] = 2;
+	base[4] = 9;
+	base[5] = 89;
+	int number = 2;
+	void * hint = &number;
+	int result = *(int * )findLast(util, &isEven, hint);
+	assert(result == 2);
+	int value = *(int * )findLast(util, &isDivisible, hint);
+	assert(value == 2);
+};
+
+int count_test(){
+	ArrayUtil util = create(4,6);
+	int *base = (int *)util.base;
+	base[0] = 11;
+	base[1] = 22;
+	base[2] = 33;
+	base[3] = 44;
+	base[4] = 58;
+	base[5] = 66;
+	int no = 2;
+	void * hint = &no;
+	int value = count(util, &isEven, &hint);
+	printf("%d\n", value);
+	return 0; 
+}
 
 int main()
 {
@@ -72,6 +104,29 @@ int main()
 	findIndex_test();
 	ArrayUtil array_1 = create(1, 6);
 	findFirst_test();
+	findLast_test();
+	count_test();
 	dispose(array_1);
 	return 0;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
