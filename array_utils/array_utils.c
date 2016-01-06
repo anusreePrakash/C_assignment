@@ -26,7 +26,6 @@ ArrayUtil resize(ArrayUtil util, int length){
 
 int findIndex(ArrayUtil util, void * element){
 	void *base = util.base;
-	// printf("%p\n",base+1 );
 	for(int i = 0; i<util.length; ++i){
 		if(memcmp(base, element, util.typeSize) == 0)	
 			return i;

@@ -41,16 +41,26 @@ int isEven(void *hint, void *item){
 	return 0;
 };
 
+int isDivisible(void *hint, void *item){
+	int *hintElement = ((int*)hint);
+	int number = * ((int*) item);
+	if(number % *hintElement == 0)
+			return 1;
+	return 0;
+};
+
 void findFirst_test(){
 	ArrayUtil util = create(4,6);
 	int * base = (int *) util.base;
 	base[0] = 1;
 	base[1] = 6;
 	base[2] = 4;
-	int h=0;
+	int h=2;
 	void *hint=&h;
-	void  *value =findFirst(util, &isEven, &hint);
+	void  *value =findFirst(util, &isEven, hint);
 	assert(*(int *) value == 6);
+	void  *result =findFirst(util, &isDivisible, hint);
+	assert(*(int *) result == 6);
 };
 
 
