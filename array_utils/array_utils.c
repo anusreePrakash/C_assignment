@@ -11,6 +11,7 @@ ArrayUtil create(int typeSize, int length){
 	return array;
 };
 
+
 int areEqual(ArrayUtil array_1, ArrayUtil array_2){
 	if((memcmp(array_1.base, array_2.base,array_1.length) == 0) && (array_1.length == array_2.length) && (array_1.typeSize == array_2.typeSize))
 		return 1;
@@ -25,6 +26,7 @@ ArrayUtil resize(ArrayUtil util, int length){
 
 int findIndex(ArrayUtil util, void * element){
 	void *base = util.base;
+	// printf("%p\n",base+1 );
 	for(int i = 0; i<util.length; ++i){
 		if(memcmp(base, element, util.typeSize) == 0)	
 			return i;
@@ -33,8 +35,21 @@ int findIndex(ArrayUtil util, void * element){
 	return -1;
 };
 
+void* findFirst(ArrayUtil util, MatchFunc * match, void * hint){
+	void * base = util.base;
+	for (int i = 0; i < util.length; ++i)
+	{
+		if(match(hint, base) == 1)
+			return base;
+		base+=util.typeSize;
+	}
+	return NULL;
+}
+
+
 void dispose(ArrayUtil util){
 	free(util.base);
 	util.typeSize = 0;
 	util.length = 0;
 };
+
