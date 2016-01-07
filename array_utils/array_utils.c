@@ -64,22 +64,22 @@ int count(ArrayUtil util, MatchFunc* match, void* hint){
 	return counter;
 };
 
+int filter(ArrayUtil util, MatchFunc* match, void* hint, void** destination, int maxItems ){
+	void *base = util.base;
+	int increment = 0;
+	for (int i = 0; i < util.length-1 && increment<maxItems; i++) {
+		if(match(hint, base) == 1){
+			destination[increment] = base;
+			increment++;
+		}
+		base+=util.typeSize;
+	}
+	return increment;
+}
+
 void dispose(ArrayUtil util){
 	free(util.base);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

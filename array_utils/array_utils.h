@@ -13,4 +13,5 @@ int findIndex(ArrayUtil util, void* element);
 void * findFirst(ArrayUtil util, MatchFunc * match, void* hint);
 void* findLast(ArrayUtil util, MatchFunc* match, void* hint);
 int count(ArrayUtil util, MatchFunc* match, void* hint);
+int filter(ArrayUtil util, MatchFunc* match, void* hint, void** destination, int maxItems );
 void dispose(ArrayUtil util);
