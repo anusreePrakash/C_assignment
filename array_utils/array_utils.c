@@ -77,9 +77,31 @@ int filter(ArrayUtil util, MatchFunc* match, void* hint, void** destination, int
 	return increment;
 }
 
+void map(ArrayUtil source, ArrayUtil destination, ConvertFunc* convert, void* hint){
+	// void *dest = destination.base;
+	for (int i = 0; i < source.length; i++) {
+		convert(hint, source.base, destination.base);
+		source.base += source.typeSize;
+		destination.base += destination.typeSize;
+	}
+};
+
 void dispose(ArrayUtil util){
 	free(util.base);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
