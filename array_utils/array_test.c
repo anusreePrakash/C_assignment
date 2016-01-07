@@ -116,10 +116,10 @@ void test_filter(){
 	}
 };
 
-void halve(void* hint, void* sourceItem, void* destinationItem){
+void halves(void* hint, void* sourceItem, void* destinationItem){
 	int source = *((int *) sourceItem);
 	int *dest = (int *)destinationItem;
-	*dest = source;
+	*dest = source/2;
 }
 
 
@@ -133,14 +133,37 @@ void test_map(){
 	ArrayUtil destination = create(4,4);
 	int number = 2;
 	void *hint = &number;
-	map(source, destination, &halve, hint);	
-	int *dest = (int *)destination.base;
-	assert(*base == * dest);
-	assert(*(base+2) == *(dest+2));
+	map(source, destination, &halves, hint);	
+	int dest = *((int *)destination.base);
+	assert(6 == dest);
+};
+
+void twice(void * hint, void * item){
+	int value = *((int *) item) * 2;
+	*(int *)item = value;
 };
 
 
+void test_forEach(){
+	ArrayUtil util = create(4,4);
+	int *base = util.base;
+	base[0] = 12;
+	base[1] = 22;
+	base[2] = 32;
+	base[3] = 42;
+	int number = 2;
+	void *hint = &number;
+	forEach(util, &twice, hint);
+	assert(24 == base[0]);
+	assert(44 == base[1]);
+	assert(64 == base[2]);
+	assert(84 == base[3]);
+};
 
+int main(){
+	test_forEach();
+	return 0;
+};
 
 
 
