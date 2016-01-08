@@ -160,8 +160,29 @@ void test_forEach(){
 	assert(84 == base[3]);
 };
 
+void* greater(void* hint, void* previousItem, void* item){
+	int *previous = (int *) previousItem;
+	int *second = (int *) item;
+	if(*previous >= *second)
+		return previousItem;
+	return item;
+}
+
+void test_reduce(){
+	ArrayUtil util = create(4,4);
+	int *base = util.base;
+	base[0] = 12;
+	base[1] = 22;
+	base[2] = 32;
+	base[3] = 42;
+	int number = 2;
+	void *hint = &number;
+	int result = *((int *) reduce(util, &greater, hint, base));
+	assert(result == 42);
+};
+
 int main(){
-	test_forEach();
+	test_reduce();
 	return 0;
 };
 

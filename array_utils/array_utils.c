@@ -92,24 +92,18 @@ void forEach(ArrayUtil util, OperationFunc* operation, void* hint){
 	}
 };
 
+void* reduce(ArrayUtil util, ReducerFunc* reducer, void* hint, void* intialValue){
+	for (int i = 0; i < util.length; i++){
+		void * value = reducer(hint, intialValue, util.base);
+		intialValue = value;
+		util.base+=util.typeSize;
+	}
+	return intialValue;
+};
+
 void dispose(ArrayUtil util){
 	free(util.base);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
