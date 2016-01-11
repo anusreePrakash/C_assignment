@@ -1,4 +1,3 @@
-
 typedef struct element{
 	void * value;
 	struct element * next;
@@ -11,3 +10,4 @@ typedef struct{
 } LinkedList;
 
 LinkedList createList();
+int add_to_list(LinkedList * list,void * value);
