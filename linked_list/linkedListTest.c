@@ -10,13 +10,16 @@ void test_createList(){
 };
 
 void test_add_to_list(){
-	LinkedList list;
+	LinkedList list = createList();
 	int no = 3;
 	void * value = &no;
-	int list_length = add_to_list(&list, &value);
+	int list_length = add_to_list(&list, value);
+	int element = *((int *)(list.first -> value));
+	assert(element == 3);
 	assert(list_length == 1);
 	int no2 = 4;
 	void * value2 = &no2;
+	int k = *((int *)(list.first -> value));
 	add_to_list(&list, &value2);
 	int no3 = 5;
 	void * value3 = &no3;
@@ -26,4 +29,95 @@ void test_add_to_list(){
 	int length = add_to_list(&list, &value4);
 	assert(length == 4);
 };
+
+void test_get_first_element(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	int firstElement = *((int *)get_first_element(list));
+	assert(firstElement == 3);
+};
+
+void test_get_last_element(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	int lastElement = *((int *)get_last_element(list));
+	assert(lastElement == 6);
+};
+
+void increment(void* element){
+	int number = *((int *)element);
+	*(int *)element = number+1;
+};
+
+void test_forEach(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	forEach(list,increment);
+	int first = *((int *)list.last->value);
+	assert(first == 7);
+	assert(no == 4);
+	assert(no2 == 5);
+	assert(no3 == 6);
+	assert(no4 == 7);
+};
+
+void test_getElementAt(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	int element = *(int *)(getElementAt(list, 2));
+	assert(element == 5);
+};
+
+void test_indexOf(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	// int element = 4;
+	// int element2 = 5;
+	int index = indexOf(list, &no2);
+	int index2 = indexOf(list, &no3);
+	assert(index == 1);
+	assert(index2 == 2);
+};
+
+
+
+
+
+
+
 
