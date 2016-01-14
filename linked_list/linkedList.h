@@ -25,4 +25,6 @@ void * getElementAt(LinkedList list, int no);
 
 int indexOf(LinkedList list, void * element);
 
-// void * deleteElementAt(LinkedList * list, int)
+void * deleteElementAt(LinkedList * list, int);
+
+void printList(LinkedList);

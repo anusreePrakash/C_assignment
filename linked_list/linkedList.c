@@ -61,6 +61,37 @@ int indexOf(LinkedList list, void * element){
 	}
 	return -1;
 };
+void * deleteElementAt(LinkedList * list, int index){
+	Element *head = list -> first;
+	void *valueAtHead ;
+	if(index >= list -> length || index < 0)
+		return NULL;
+	if(index == 0){
+		valueAtHead = head -> value;
+		list -> first  = head -> next;
+		list -> length--;
+		return valueAtHead;
+	}
+
+	else{
+		for(int i = 0; i<index-1; i++){
+			head=head->next;
+		}      
+	valueAtHead = head -> next -> value;
+	head->next  = head -> next -> next;
+	list -> length--;
+		return valueAtHead;
+	}
+	return NULL;
+};
+
+void printList(LinkedList list){
+	Element *ele = list.first;
+	while(ele!=NULL){
+		printf("%d\n", *(int *)ele->value);
+		ele = ele->next;
+	}
+}
 
 	
 

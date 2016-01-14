@@ -106,18 +106,53 @@ void test_indexOf(){
 	add_to_list(&list, &no2);
 	add_to_list(&list, &no3);
 	add_to_list(&list, &no4);
-	// int element = 4;
-	// int element2 = 5;
 	int index = indexOf(list, &no2);
 	int index2 = indexOf(list, &no3);
 	assert(index == 1);
 	assert(index2 == 2);
 };
 
+void test_deleteElementAt(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	assert(deleteElementAt(&list, -1) == NULL);
+	assert(deleteElementAt(&list, 11) == NULL);
+};
 
+void test_deleteElementAt_should_return_the_reference_of_the_first_element_if_index_is_0(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	int y = *(int *)deleteElementAt(&list, 0);
+	assert(y == no);
+};
 
-
-
+void test_deleteElementAt_should_return_the_reference_at_the_deleted_node(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	int result = *(int *)deleteElementAt(&list, 2);
+	assert(result == no3);
+};
 
 
 
