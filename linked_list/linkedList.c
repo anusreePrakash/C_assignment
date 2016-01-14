@@ -106,7 +106,31 @@ int asArray(LinkedList list, void ** array, int maxElements){
 	return count;
 };
 
-	
+int dividedBy(void * hint, void * element){
+	int value = *(int *)element;
+	int divisor = *(int *)hint;
+	if(value % divisor == 0){
+		return 1;
+	}
+	return 0;
+}
+
+LinkedList filter(LinkedList list, MatchFunc match, void * hint){
+	LinkedList newList = createList();
+	Element *head = list.first;
+	for (int i = 0; i < list.length; i++){
+		if(match(hint, head -> value) == 1){
+			add_to_list(&newList, head -> value);
+		}
+		head = head -> next;
+	}
+	return newList;	
+};
+
+
+
+
+
 
 
 

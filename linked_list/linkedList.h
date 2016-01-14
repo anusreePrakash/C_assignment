@@ -11,7 +11,7 @@ typedef struct{
 
 typedef void (*ElementProcessor)(void *);
 
-
+typedef int (MatchFunc)(void* , void* );
 
 LinkedList createList();
 
@@ -31,4 +31,8 @@ void * deleteElementAt(LinkedList * list, int);
 
 void printList(LinkedList);
 
+int dividedBy(void * hint, void* element);
+
 int asArray(LinkedList list, void ** array, int maxElements);
+
+LinkedList filter(LinkedList list, MatchFunc function, void * hint);
