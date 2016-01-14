@@ -154,5 +154,34 @@ void test_deleteElementAt_should_return_the_reference_at_the_deleted_node(){
 	assert(result == no3);
 };
 
+void test_asArray(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	void * array = calloc(list.length, sizeof(int));
+	int maxElements = 4;
+	int ArrayLength = asArray(list, array, maxElements);
+	assert(ArrayLength == 4);
+	for (int i = 0; i < maxElements; i++){
+		assert(**(int **)array+i == *((int *)list.first -> value));
+		list.first = list.first -> next;
+	}
+};
+
+
+
+
+
+
+
+
+
+
 
 

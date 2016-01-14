@@ -91,7 +91,20 @@ void printList(LinkedList list){
 		printf("%d\n", *(int *)ele->value);
 		ele = ele->next;
 	}
-}
+};
+
+int asArray(LinkedList list, void ** array, int maxElements){
+	Element *ele = list.first;
+	int count = 0;
+	for (int i = 0; i < list.length; i++){
+		if(i < maxElements){
+			array[i] = ele -> value;
+			ele = ele -> next;
+			count++;
+		}
+	}
+	return count;
+};
 
 	
 

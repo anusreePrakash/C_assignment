@@ -180,14 +180,3 @@ void test_reduce(){
 	int result = *((int *) reduce(util, &greater, hint, base));
 	assert(result == 42);
 };
-
-
-
-// else{
-	// 	for(int i = 0; i<index-1; i++){
-	// 		valueAtHead = head -> value;
-	// 		list -> first  = head -> next;
-	// 		list -> length--;
-	// 		return valueAtHead;
-	// 	}      
-	// }

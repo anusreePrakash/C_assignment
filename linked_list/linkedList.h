@@ -11,6 +11,8 @@ typedef struct{
 
 typedef void (*ElementProcessor)(void *);
 
+
+
 LinkedList createList();
 
 int add_to_list(LinkedList * list,void * value);
@@ -28,3 +30,5 @@ int indexOf(LinkedList list, void * element);
 void * deleteElementAt(LinkedList * list, int);
 
 void printList(LinkedList);
+
+int asArray(LinkedList list, void ** array, int maxElements);
