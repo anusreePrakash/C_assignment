@@ -138,6 +138,7 @@ void test_deleteElementAt_should_return_the_reference_of_the_first_element_if_in
 	add_to_list(&list, &no4);
 	int y = *(int *)deleteElementAt(&list, 0);
 	assert(y == no);
+	// printList(list);
 };
 
 void test_deleteElementAt_should_return_the_reference_at_the_deleted_node(){
@@ -188,7 +189,30 @@ void test_filter(){
 	LinkedList newList = filter(list, dividedBy, &hint);
 	assert(*(int *) newList.first -> value == 4);
 	assert(*(int *) newList.last -> value == 6);
+	// printList(newList);	
 };
+
+void test_reverse(){
+	LinkedList list = createList();
+	int no = 3;
+	int no2 = 4;
+	int no3 = 5;
+	int no4 = 6;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	LinkedList newList = reverse(list);
+	assert(*(int *) newList.first -> value == 6);
+	assert(*(int *) newList.last -> value == 3);
+	// printList(newList);	
+};
+
+
+
+
+
+
 
 
 

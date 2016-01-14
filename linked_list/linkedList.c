@@ -68,7 +68,9 @@ void * deleteElementAt(LinkedList * list, int index){
 		return NULL;
 	if(index == 0){
 		valueAtHead = head -> value;
-		list -> first  = head -> next;
+		list -> first = head -> next;
+		// head = head -> next;
+
 		list -> length--;
 		return valueAtHead;
 	}
@@ -77,9 +79,9 @@ void * deleteElementAt(LinkedList * list, int index){
 		for(int i = 0; i<index-1; i++){
 			head=head->next;
 		}      
-	valueAtHead = head -> next -> value;
-	head->next  = head -> next -> next;
-	list -> length--;
+		valueAtHead = head -> next -> value;
+		head->next  = head -> next -> next;
+		list -> length--;
 		return valueAtHead;
 	}
 	return NULL;
@@ -88,7 +90,7 @@ void * deleteElementAt(LinkedList * list, int index){
 void printList(LinkedList list){
 	Element *ele = list.first;
 	while(ele!=NULL){
-		printf("%d\n", *(int *)ele->value);
+		printf("    %d\n", *(int *)ele->value);
 		ele = ele->next;
 	}
 };
@@ -127,6 +129,13 @@ LinkedList filter(LinkedList list, MatchFunc match, void * hint){
 	return newList;	
 };
 
+ LinkedList reverse(LinkedList list){
+ 	LinkedList reverseList = createList();
+ 	for (int i = list.length-1; i >= 0; i--){
+ 		add_to_list(&reverseList, getElementAt(list, i));
+ 	}
+ 	return reverseList;
+ }
 
 
 

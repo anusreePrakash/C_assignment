@@ -36,3 +36,5 @@ int dividedBy(void * hint, void* element);
 int asArray(LinkedList list, void ** array, int maxElements);
 
 LinkedList filter(LinkedList list, MatchFunc function, void * hint);
+
+LinkedList reverse(LinkedList list);
