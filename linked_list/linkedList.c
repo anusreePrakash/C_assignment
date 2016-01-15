@@ -140,9 +140,8 @@ LinkedList filter(LinkedList list, MatchFunc match, void * hint){
 LinkedList map(LinkedList list, ConvertFunc converter, void * hint){
 	LinkedList newList = createList();
 	for(int i = 0; i< list.length; i++){
-		void * dest = malloc(sizeof(void*));
-		converter(hint, list.first -> value, dest );
-		add_to_list(&newList, dest);
+		add_to_list(&newList, NULL);
+		converter(hint, list.first -> value, &(newList.last->value) );
 		list.first = list.first -> next; 
 	}
 	return newList;

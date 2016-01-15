@@ -15,6 +15,8 @@ typedef int (MatchFunc)(void* , void* );
 
 typedef void (*ConvertFunc)(void* , void* , void* );
 
+typedef void* (Reducer)(void* hint, void* previousItem, void* item);
+
 LinkedList createList();
 
 int add_to_list(LinkedList * list,void * value);

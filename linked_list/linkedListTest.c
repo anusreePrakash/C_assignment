@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "linkedList.h"
 #include <assert.h>
+#include <string.h>
 
 void test_createList(){
 	assert(createList().first == NULL);
@@ -209,9 +210,10 @@ void test_reverse(){
 };
 
 void halves(void* hint, void* sourceItem, void* destinationItem){
-	int source = *((int *) sourceItem);
-	*(int *)destinationItem = source/2;
-}
+	int *dest = malloc(sizeof(int));
+	*dest = (*(int *)sourceItem)/2; 
+	memcpy(destinationItem, &dest, 8);
+};
 
 void test_map(){
 	LinkedList list = createList();
@@ -224,6 +226,7 @@ void test_map(){
 	add_to_list(&list, &no2);
 	add_to_list(&list, &no3);
 	add_to_list(&list, &no4);
+
 	LinkedList newList = map(list, halves, &hint);
 	assert(*(int *) newList.first -> value == 3);
 	assert(*(int *) newList.last -> value == 23);
