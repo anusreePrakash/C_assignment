@@ -137,6 +137,16 @@ LinkedList filter(LinkedList list, MatchFunc match, void * hint){
  	return reverseList;
  }
 
+LinkedList map(LinkedList list, ConvertFunc converter, void * hint){
+	LinkedList newList = createList();
+	for(int i = 0; i< list.length; i++){
+		void * dest = malloc(sizeof(void*));
+		converter(hint, list.first -> value, dest );
+		add_to_list(&newList, dest);
+		list.first = list.first -> next; 
+	}
+	return newList;
+};
 
 
 
