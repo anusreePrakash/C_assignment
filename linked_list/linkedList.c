@@ -147,19 +147,12 @@ LinkedList map(LinkedList list, ConvertFunc converter, void * hint){
 	return newList;
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void *reduce(LinkedList list, Reducer greater, void * hint, void * initialValue){
+	Element *head = list.first;
+	for (int i = 0; i < list.length; i++){
+		void * maximum = greater(hint, initialValue, head -> value);
+		initialValue = maximum;
+		head = head -> next;
+	}
+	return initialValue;
+};

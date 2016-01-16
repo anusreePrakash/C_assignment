@@ -226,23 +226,31 @@ void test_map(){
 	add_to_list(&list, &no2);
 	add_to_list(&list, &no3);
 	add_to_list(&list, &no4);
-
 	LinkedList newList = map(list, halves, &hint);
 	assert(*(int *) newList.first -> value == 3);
 	assert(*(int *) newList.last -> value == 23);
 };
 
+void *greaterThan(void* hint, void* previousItem, void* item){
+	int *previous = (int *) previousItem;
+	int *second = (int *) item;
+	if(*previous >= *second)
+		return previousItem;
+	return item;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+void test_reduce(){
+	LinkedList list = createList();
+	int no = 6;
+	int no2 = 4;
+	int no3 = 10;
+	int no4 = 46;
+	int hint = 2;
+	add_to_list(&list, &no);
+	add_to_list(&list, &no2);
+	add_to_list(&list, &no3);
+	add_to_list(&list, &no4);
+	int initialValue = 0;
+	int greatest = *(int *)reduce(list, &greaterThan, &hint, &initialValue);
+	assert(greatest == 46);
+};

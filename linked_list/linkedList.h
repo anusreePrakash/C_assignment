@@ -44,3 +44,5 @@ LinkedList filter(LinkedList list, MatchFunc function, void * hint);
 LinkedList reverse(LinkedList list);
 
 LinkedList map(LinkedList, ConvertFunc, void * );
+
+void *reduce(LinkedList, Reducer, void *hint, void *initialValue);

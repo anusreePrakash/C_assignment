@@ -180,3 +180,9 @@ void test_reduce(){
 	int result = *((int *) reduce(util, &greater, hint, base));
 	assert(result == 42);
 };
+
+
+
+
+
+
